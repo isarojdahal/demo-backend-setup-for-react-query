@@ -1,0 +1,215 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"TodoDTO": {
+				"properties": {
+					"data": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {}
+	},
+	"info": {
+		"title": "backend",
+		"version": "1.0.0",
+		"license": {
+			"name": "ISC"
+		},
+		"contact": {}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/todo": {
+			"post": {
+				"operationId": "AddTodo",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"success": {
+											"type": "boolean"
+										},
+										"created_at": {
+											"type": "string"
+										},
+										"data": {
+											"type": "string"
+										},
+										"id": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"success",
+										"created_at",
+										"data",
+										"id"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/TodoDTO"
+							}
+						}
+					}
+				}
+			},
+			"get": {
+				"operationId": "GetTodos",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/users": {
+			"get": {
+				"operationId": "GetUsers",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"properties": {
+											"company": {
+												"properties": {
+													"bs": {
+														"type": "string"
+													},
+													"catchPhrase": {
+														"type": "string"
+													},
+													"name": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"bs",
+													"catchPhrase",
+													"name"
+												],
+												"type": "object"
+											},
+											"website": {
+												"type": "string"
+											},
+											"phone": {
+												"type": "string"
+											},
+											"address": {
+												"properties": {
+													"geo": {
+														"properties": {
+															"lng": {
+																"type": "string"
+															},
+															"lat": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"lng",
+															"lat"
+														],
+														"type": "object"
+													},
+													"zipcode": {
+														"type": "string"
+													},
+													"city": {
+														"type": "string"
+													},
+													"suite": {
+														"type": "string"
+													},
+													"street": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"geo",
+													"zipcode",
+													"city",
+													"suite",
+													"street"
+												],
+												"type": "object"
+											},
+											"email": {
+												"type": "string"
+											},
+											"username": {
+												"type": "string"
+											},
+											"name": {
+												"type": "string"
+											},
+											"id": {
+												"type": "number",
+												"format": "double"
+											}
+										},
+										"required": [
+											"company",
+											"website",
+											"phone",
+											"address",
+											"email",
+											"username",
+											"name",
+											"id"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": []
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/"
+		}
+	]
+}
